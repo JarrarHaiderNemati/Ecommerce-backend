@@ -23,12 +23,12 @@ const storage=multer.diskStorage({
 const upload=multer({storage:storage});
 
 const PORT = 5000;
-const User = require("../models/Users.js");
-const Product=require('../models/Products.js');
-const Cart=require('../models/Cart.js');
-const History=require('../models/History.js');
-const Discount=require('../models/Discount.js');
-const Feedback=require('../models/Feedback.js');
+const User = require("./models/Users.js");
+const Product=require('./models/Products.js');
+const Cart=require('./models/Cart.js');
+const History=require('./models/History.js');
+const Discount=require('./models/Discount.js');
+const Feedback=require('./models/Feedback.js');
 const threshold=5; // For more feedbacks option
 const cashiersAllowed = 3; //Max numbers of cashiers allowed
 
