@@ -23,7 +23,7 @@ const storage=multer.diskStorage({
 const upload=multer({storage:storage});
 
 const PORT = 5000;
-const User = require("../models/Users");
+const User = require("../models/Users.js");
 const Product=require('../models/Products.js');
 const Cart=require('../models/Cart.js');
 const History=require('../models/History.js');
