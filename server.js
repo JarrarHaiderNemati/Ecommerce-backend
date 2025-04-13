@@ -7,7 +7,14 @@ const app = express();
 const fs=require('fs');
 const path=require('path');
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",                   // for local testing
+    "https://mangomerce.netlify.app"           // live frontend
+  ],
+  credentials: true
+}));
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const storage=multer.diskStorage({
