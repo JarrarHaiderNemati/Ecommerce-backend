@@ -33,7 +33,7 @@ const PORT = 5000;
 const User = require("./models/Users.js");
 const Product=require('./models/Products.js');
 const Cart=require('./models/Cart.js');
-const History=require('./models/History.js');
+const History=require('./models/History.js');f
 const Discount=require('./models/Discount.js');
 const Feedback=require('./models/Feedback.js');
 const threshold=5; // For more feedbacks option
@@ -1084,6 +1084,35 @@ app.get('/CfeedBacklist',async(req,res)=>{ //Get all the feedbacks
   catch(err) {
     console.log('Inside catch block of /feedBacklist ! ',err);
     return res.status(500).json({message:'Some error occured ! '});
+  }
+});
+
+app.put('/updateDiscountName', async (req, res) => {
+  const { name, newName } = req.body;
+
+  if (!name || !newName) {
+    console.log('Name or newName is missing , /updateDiscountName ! ');
+    return res.status(400).json({ message: 'Name or newName is missing !' });
+  }
+
+  try {
+    console.log('Inside try block of /updateDiscountName !');
+    
+    const findItem = await Discount.findOneAndUpdate(
+      { name: name },              // Find by old name
+      { $set: { name: newName } }, // Update to new name
+      { new: true }                // Return updated document
+    );
+
+    if (findItem) {
+      console.log('Updated !');
+      return res.status(200).json({ message: 'Discount name updated !' });
+    }
+
+    return res.status(404).json({ message: 'Item not found !' });
+  } catch (err) {
+    console.log('Error in /updateDiscountName:', err);
+    return res.status(500).json({ message: 'Some error occurred !' });
   }
 });
 
