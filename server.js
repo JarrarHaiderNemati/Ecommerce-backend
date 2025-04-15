@@ -7,10 +7,13 @@ const app = express();
 const fs=require('fs');
 const path=require('path');
 
+const liveFrontendLink="https://mangomerce.netlify.app";
+const localFrontendLink="http://localhost:3000";
+
 app.use(cors({
   origin: [
-    "http://localhost:3000",                   // for local testing
-    "https://mangomerce.netlify.app"           // live frontend
+    `${localFrontendLink}`,          // for local testing
+    `${liveFrontendLink}`           // live frontend
   ],
   credentials: true
 }));
