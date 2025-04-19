@@ -470,6 +470,7 @@ app.get('/getStock',async (req,res)=>{ //Get stocks of items in market
 
 app.get('/getUrcart',async (req,res)=>{ //Return items from your cart
   const {email}=req.query;
+  console.log("EMAIL INSIDE GETURCART IS ",email);
   if(!email) {
     return res.status(500).json({message:'Email is missing ! '});
   }
